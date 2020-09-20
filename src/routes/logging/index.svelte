@@ -25,6 +25,7 @@
 
     if (res.status == 200) {
       logs = await (await fetch("logging.json")).json();
+      form_obj = {}
     }
   };
 
