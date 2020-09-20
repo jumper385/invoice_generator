@@ -4,11 +4,15 @@ services:
   web:
     build: web
     restart: unless-stopped
+    environment: 
+      - MONGODB=db:27017
     ports:
       - "45:3000"
   db:
     image: mongo
     restart: unless-stopped
+    expose:
+      - "27017"
     volumes:
       - dbdata:/data/db
 
