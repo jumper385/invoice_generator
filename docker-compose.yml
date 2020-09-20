@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  web:
+    build: web
+    restart: unless-stopped
+    ports:
+      - "45:3000"
+  db:
+    image: mongo
+    restart: unless-stopped
+    volumes:
+      - dbdata:/data/db
+
+volumes:
+  dbdata:
