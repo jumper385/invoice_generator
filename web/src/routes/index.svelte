@@ -78,9 +78,9 @@
 
 	{#each logs as entry}
 	<p>{entry.description}</p>
-	<p style='text-align:right;'>{entry.hours}</p>
-	<p style='text-align:right;'>${entry.rate}</p>
-	<p style='text-align:right;'>${entry.rate * entry.hours}</p>
+	<p style='text-align:right;'>{entry.hours.toFixed(3)}</p>
+	<p style='text-align:right;'>${entry.rate.toFixed(2)}</p>
+	<p style='text-align:right;'>${(entry.rate * entry.hours).toFixed(2)}</p>
 	{/each}
 
 	{:else}

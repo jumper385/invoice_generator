@@ -164,8 +164,8 @@
     {#each incomplete as log}
       <p>{dateString(new Date(log.timestamp))}</p>
       <p>{log.description}</p>
-      <p>{log.hours}</p>
-      <p>{log.hours * log.rate}</p>
+      <p>{log.hours.toFixed(3)}</p>
+      <p>${(log.hours * log.rate).toFixed(2)}</p>
       <div style="display:flex; align-items:center">
         <button
           on:click={() => billLog(log._id)}
@@ -197,8 +197,8 @@
     {#each completed as log}
       <p>{dateString(new Date(log.timestamp))}</p>
       <p>{log.description}</p>
-      <p>{log.hours}</p>
-      <p>{log.hours * log.rate}</p>
+      <p>{log.hours.toFixed(3)}</p>
+      <p>${(log.hours * log.rate).toFixed(2)}</p>
       <div style="display:flex; align-items:center">
         <button
           on:click={() => billLog(log._id)}
