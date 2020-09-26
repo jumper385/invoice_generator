@@ -5,5 +5,6 @@ export const WorkLog = mongoose.model('WorkLog', {
     hours: { required: true, type: Number, default: 0 },
     rate: { required: true, type: Number, default: 30 },
     billed: { required: true, type: Boolean, default: false },
-    timestamp: {required: true, type: Date, default: () => new Date()}
+    timestamp: { required: true, type: Date, default: () => new Date() },
+    stashed: {required: true, type: Boolean, default: () => false}
 })
