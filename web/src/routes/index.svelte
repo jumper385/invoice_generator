@@ -38,7 +38,7 @@
 </style>
 
 <head>
-	<title>Invoice - {date}</title>
+	<title>Invoice - {date || dateString(new Date())}</title>
 </head>
 
 <div style='display:flex; align-items:center; justify-content:space-between; height:64pt;'>
