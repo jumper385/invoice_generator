@@ -89,7 +89,7 @@
 	{/if}
 
 	<p style='font-weight:bold; grid-column: span 3; text-align:right; color: {accent};'>Total Amount Payable (Incl. GST)</p>
-	<p style='font-weight:bold; text-align:right; color: {accent};'>${total}</p>
+	<p style='font-weight:bold; text-align:right; color: {accent};'>${total.toFixed(2)}</p>
 </div>
 
 <div style='text-align:center; margin-top:{separation};'>
