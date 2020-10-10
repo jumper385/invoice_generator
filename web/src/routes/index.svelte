@@ -19,7 +19,7 @@
 	let date2 = dates && dates[dates.length - 1];
 	let date = dates && `${dateString(date1)} - ${dateString(date2)}`;
 
-	logs = logs
+	let reduced_logs = logs
 		.filter((log) => !log.billed)
 		.reduce((acc, curr) => {
 			curr.description in acc || (acc[curr.description] = {hours:0, rate:30})
@@ -27,13 +27,16 @@
 				hours: acc[curr.description].hours + curr.hours,
 				rate: curr.rate,
 			}
-			console.log(acc)
 			return acc;
 		}, {});
 
 	let total =
 		logs &&
-		Object.keys(logs).reduce((acc, curr) => acc + logs[curr].hours, 0);
+		logs.reduce((acc, curr) => {
+			console.log(curr)
+			acc += curr.hours * curr.rate
+			return acc
+		}, 0);
 
 	let accent = "#E94560";
 	let separation = "16pt";
@@ -95,12 +98,12 @@
 	<p style="font-weight:bold; text-align:right; color: {secondary};">Total</p>
 
 	{#if logs.length != 0}
-		{#each Object.keys(logs) as entry}
+		{#each Object.keys(reduced_logs) as entry}
 			<p>{entry}</p>
-			<p style="text-align:right;">{logs[entry].hours.toFixed(3)}</p>
-			<p style="text-align:right;">${logs[entry].rate.toFixed(2)}</p>
+			<p style="text-align:right;">{reduced_logs[entry].hours.toFixed(3)}</p>
+			<p style="text-align:right;">${reduced_logs[entry].rate.toFixed(2)}</p>
 			<p style="text-align:right;">
-				${(logs[entry].rate * logs[entry].hours).toFixed(2)}
+				${(reduced_logs[entry].rate * reduced_logs[entry].hours).toFixed(2)}
 			</p>
 		{/each}
 	{:else}
