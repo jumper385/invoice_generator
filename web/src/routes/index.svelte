@@ -3,6 +3,7 @@
 		return this.fetch(`index.json`)
 			.then((r) => r.json())
 			.then((logs) => {
+				logs = logs.filter(x => !x.billed)
 				return { logs };
 			});
 	}
