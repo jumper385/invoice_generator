@@ -98,8 +98,3 @@
 	<p>BSB: 066-192</p>
 	<p>ACC: 1060 2535</p>
 </div>
-
-<div style='text-align:center; margin-top:{separation};'>
-	<h3 style='font-weight:bold; color: {secondary};'>Thankyou 🙏</h3>
-	<p style='width:150pt; margin:0 auto;'>Its been a pleasure working with you so far...</p>
-</div>
