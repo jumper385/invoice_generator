@@ -88,8 +88,13 @@
 	<p style='grid-column: span 5; text-align:center'>There are no billables right now</p>
 	{/if}
 
-	<p style='font-weight:bold; grid-column: span 3; text-align:right; color: {accent};'>Total Amount Payable (Incl. GST)</p>
-	<p style='font-weight:bold; text-align:right; color: {accent};'>${total.toFixed(2)}</p>
+	<p
+		style="font-weight:bold; grid-column: span 3; text-align:right; color: {accent};">
+		Total Amount Payable (No GST Included)
+	</p>
+	<p style="font-weight:bold; text-align:right; color: {accent};">
+		${total.toFixed(2)}
+	</p>
 </div>
 
 <div style='text-align:center; margin-top:{separation};'>
