@@ -34,7 +34,6 @@
 	let total =
 		logs &&
 		logs.reduce((acc, curr) => {
-			console.log(curr)
 			acc += curr.hours * curr.rate
 			return acc
 		}, 0);
