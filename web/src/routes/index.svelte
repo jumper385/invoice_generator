@@ -111,7 +111,7 @@
 
 	<p
 		style="font-weight:bold; grid-column: span 3; text-align:right; color: {accent};">
-		Total Amount Payable (No GST Included)
+		Total Amount Payable (Not Including GST)
 	</p>
 	<p style="font-weight:bold; text-align:right; color: {accent};">
 		${total.toFixed(2)}
