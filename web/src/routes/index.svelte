@@ -21,7 +21,7 @@
 	let date = dates && `${dateString(date1)} - ${dateString(date2)}`;
 
 	let reduced_logs = logs
-		.filter((log) => !log.billed)
+		.filter((log) => !log.billed && !log.stashed)
 		.reduce((acc, curr) => {
 			curr.description in acc || (acc[curr.description] = {hours:0, rate:30})
 			acc[curr.description] = {
