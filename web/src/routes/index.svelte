@@ -3,7 +3,6 @@
 		return this.fetch(`index.json`)
 			.then((r) => r.json())
 			.then((logs) => {
-				logs = logs.filter(x => !x.billed)
 				return { logs };
 			});
 	}
@@ -21,7 +20,7 @@
 	let date = dates && `${dateString(date1)} - ${dateString(date2)}`;
 
 	let reduced_logs = logs
-		.filter((log) => !log.billed && !log.stashed)
+		.filter((log) => !log.billed & !log.stashed)
 		.reduce((acc, curr) => {
 			curr.description in acc || (acc[curr.description] = {hours:0, rate:30})
 			acc[curr.description] = {
@@ -34,7 +33,7 @@
 	let total =
 		logs &&
 		logs.reduce((acc, curr) => {
-			acc += curr.hours * curr.rate
+			acc += curr.billed | curr.stashed ? 0 : curr.hours * curr.rate
 			return acc
 		}, 0);
 
