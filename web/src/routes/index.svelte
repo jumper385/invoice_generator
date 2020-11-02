@@ -17,7 +17,7 @@
 
 	let date1 = dates && dates[0];
 	let date2 = dates && dates[dates.length - 1];
-	let date = dates && `${dateString(date1)} - ${dateString(date2)}`;
+	let date = dates && `Billing From ${dateString(date2)} to ${dateString(date1)}`;
 
 	let reduced_logs = logs
 		.filter((log) => !log.billed & !log.stashed)
@@ -60,8 +60,11 @@
 	style="display:flex; align-items:center; justify-content:space-between; height:64pt;">
 	<div>
 		<h1 style="font-weight:bold; color: {secondary}">Tax Invoice</h1>
-		<p style="color: {accent}; text-transform: capitalize;">
+		<p style="color: {accent};">
 			{date || dateString(new Date())}
+		</p>
+		<p style="color: {accent}; text-transform: Capitalize">
+			Date of Issue: {dateString(new Date())}
 		</p>
 	</div>
 	<div><img src="logo.svg" alt="logo" style="height:64pt" /></div>
