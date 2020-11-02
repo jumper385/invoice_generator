@@ -14,10 +14,7 @@
 
 	let dates =
 		logs.length != 0 && logs
-			.filter(log => {
-				console.log(log)
-				return !log.stashed && !log.billed
-			})
+			.filter(log => !log.stashed && !log.billed)
 			.map((log) => new Date(log.timestamp))
 			.sort();
 	
@@ -25,7 +22,7 @@
 
 	let date1 = dates && dates[0];
 	let date2 = dates && dates[dates.length - 1];
-	let date = dates && `From ${dateString(date1)} to ${dateString(date2)}`;
+	let date = dates && `Billing From ${dateString(date2)} to ${dateString(date1)}`;
 
 	let reduced_logs = logs
 		.filter((log) => !log.billed & !log.stashed)
