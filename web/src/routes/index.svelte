@@ -17,12 +17,8 @@
 			.filter(log => !log.stashed && !log.billed)
 			.map((log) => new Date(log.timestamp))
 			.sort((d1,d2) => d1 - d2);
-	
-	console.log(dates)
-
-	let date1 = dates && dates[0];
-	let date2 = dates && dates[dates.length - 1];
-	let date = dates && `From ${dateString(date1)} to ${dateString(date2)}`;
+			
+	let date = dates && `From ${dateString(dates[0])} to ${dateString(dates[dates.length - 1])}`;
 
 	console.log(date)
 
