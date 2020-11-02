@@ -13,7 +13,15 @@
 	import { dateString } from "../helpers/datestring";
 
 	let dates =
-		logs.length != 0 && logs.map((log) => new Date(log.timestamp)).sort();
+		logs.length != 0 && logs
+			.filter(log => {
+				console.log(log)
+				return !log.stashed && !log.billed
+			})
+			.map((log) => new Date(log.timestamp))
+			.sort();
+	
+	console.log(dates)
 
 	let date1 = dates && dates[0];
 	let date2 = dates && dates[dates.length - 1];
