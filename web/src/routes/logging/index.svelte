@@ -10,8 +10,8 @@
 
 <script>
   export let logs;
-  $: completed = logs.filter((x) => x.billed || x.stashed).slice(-6,-1);
-  $: incomplete = logs.filter((x) => !x.billed * !x.stashed);
+  $: completed = logs.filter((x) => x.billed || x.stashed).slice(-6,-1).sort((e1,e2) => new Date(e2.timestamp) - new Date(e1.timestamp));;
+  $: incomplete = logs.filter((x) => !x.billed * !x.stashed).sort((e1,e2) => new Date(e2.timestamp) - new Date(e1.timestamp));
 
   import { dateString } from "../../helpers/datestring";
 
@@ -136,15 +136,24 @@
       id="description" />
   </div>
   <div class="input_field">
-    <label for="description">Hours</label>
+    <label for="hours">Hours</label>
     <input
       bind:value={form_obj.hours}
       type="number"
-      step="0.01"
+      step="0.001"
+      min='0'
       name="hours"
       id="hours" />
   </div>
-  <input type="submit" disabled={!form_obj.hours}/>
+  <div class="input_field">
+    <label for="timestamp">Timestamp</label>
+    <input
+      bind:value={form_obj.timestamp}
+      type="date"
+      name="timestamp"
+      id="timestamp" />
+  </div>
+  <input type="submit" style="height:32pt;grid-column: span 3" disabled={form_obj.hours < 0}/>
 </form>
 <br />
 
