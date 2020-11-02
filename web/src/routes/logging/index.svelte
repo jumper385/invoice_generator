@@ -10,7 +10,7 @@
 
 <script>
   export let logs;
-  $: completed = logs.filter((x) => x.billed || x.stashed).splice(0, 6);
+  $: completed = logs.filter((x) => x.billed || x.stashed).slice(-6,-1);
   $: incomplete = logs.filter((x) => !x.billed * !x.stashed);
 
   import { dateString } from "../../helpers/datestring";
