@@ -11,7 +11,7 @@ export const post = async (req, res) => {
 
 export const put = async (req, res) => {
     let { query, delta } = req.body;
-    awaitdb.editCollection(WorkLog, query, delta)
+    await db.editCollection(WorkLog, query, delta)
     res.json(await db.queryCollection(WorkLog, query));
 }
 
