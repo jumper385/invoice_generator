@@ -17,15 +17,15 @@
 			.filter(log => !log.stashed && !log.billed)
 			.map((log) => new Date(log.timestamp))
 			.sort();
-	
-	console.log(dates)
 
 	let date1 = dates && dates[0];
 	let date2 = dates && dates[dates.length - 1];
-	let date = dates && `Billing From ${dateString(date2)} to ${dateString(date1)}`;
+	let date = dates && `From ${dateString(date1)} to ${dateString(date2)}`;
+
+	console.log(date)
 
 	let reduced_logs = logs
-		.filter((log) => !log.billed & !log.stashed)
+		.filter((log) => !log.billed && !log.stashed)
 		.reduce((acc, curr) => {
 			curr.description in acc || (acc[curr.description] = {hours:0, rate:30})
 			acc[curr.description] = {
@@ -58,7 +58,7 @@
 </style>
 
 <head>
-	<title>Invoice - {date || dateString(new Date())}</title>
+	<title>Invoice DOI:{dateString(new Date())}</title>
 </head>
 
 <div
