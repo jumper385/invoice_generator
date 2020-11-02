@@ -16,7 +16,9 @@
 		logs.length != 0 && logs
 			.filter(log => !log.stashed && !log.billed)
 			.map((log) => new Date(log.timestamp))
-			.sort();
+			.sort((d1,d2) => d1 - d2);
+	
+	console.log(dates)
 
 	let date1 = dates && dates[0];
 	let date2 = dates && dates[dates.length - 1];
