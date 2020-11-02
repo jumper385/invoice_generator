@@ -2,7 +2,8 @@ import * as db from '../../dbhelpers/mongoosehelpers';
 import { WorkLog } from '../../dbhelpers/schemas';
 
 export const get = async (req, res) => {
-	res.json(await db.queryCollection(WorkLog, req.query));
+    const {query} = req.body
+	res.json(await db.queryCollection(WorkLog, query));
 }
 
 export const post = async (req, res) => {
