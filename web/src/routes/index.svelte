@@ -25,7 +25,7 @@
 
 	let date1 = dates && dates[0];
 	let date2 = dates && dates[dates.length - 1];
-	let date = dates && `Billing From ${dateString(date2)} to ${dateString(date1)}`;
+	let date = dates && `Billing From ${dateString(date1)} to ${dateString(date2)}`;
 
 	let reduced_logs = logs
 		.filter((log) => !log.billed & !log.stashed)
