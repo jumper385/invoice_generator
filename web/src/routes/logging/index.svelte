@@ -10,7 +10,7 @@
 
 <script>
   export let logs;
-  import EntryDisplay from "../../components/EntryDisplay.svelte"
+  import EntryDisplay from "../../components/EntryDisplay.svelte";
   let form_obj = {};
 
   $: completed = logs
@@ -38,8 +38,6 @@
   };
 
   const deleteLog = async (id) => {
-    console.log(id);
-
     let res = await fetch("logging.json", {
       method: "DELETE",
       headers: {
@@ -47,10 +45,7 @@
       },
       body: JSON.stringify({ _id: id }),
     });
-
-    if (res.status == 200) {
-      logs = await (await fetch("logging.json")).json();
-    }
+    if (res.status == 200) logs = await (await fetch("logging.json")).json();
   };
 
   const billLog = async (id) => {
@@ -64,9 +59,7 @@
         delta: { billed: true, stashed: false },
       }),
     });
-    if (res.status == 200) {
-      logs = await (await fetch("logging.json")).json();
-    }
+    if (res.status == 200) logs = await (await fetch("logging.json")).json();
   };
 
   const stashLog = async (id) => {
@@ -80,9 +73,7 @@
         delta: { stashed: true, billed: false },
       }),
     });
-    if (res.status == 200) {
-      logs = await (await fetch("logging.json")).json();
-    }
+    if (res.status == 200) logs = await (await fetch("logging.json")).json();
   };
 </script>
 
@@ -171,18 +162,7 @@
 <br />
 
 <h3 style="margin-top:18pt">Current Billable Tasks</h3>
-
-<EntryDisplay 
-  entry_array={incomplete} 
-  billLog={billLog}
-  deleteLog={deleteLog}
-  stashLog={stashLog}
-/>
+<EntryDisplay entry_array={incomplete} {billLog} {deleteLog} {stashLog} />
 
 <h3 style="margin-top:18pt">Recently Finalized Tasks</h3>
-<EntryDisplay 
-  entry_array={completed} 
-  billLog={billLog}
-  deleteLog={deleteLog}
-  stashLog={stashLog}
-/>
+<EntryDisplay entry_array={completed} {billLog} {deleteLog} {stashLog} />
