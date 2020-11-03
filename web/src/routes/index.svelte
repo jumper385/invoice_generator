@@ -19,13 +19,13 @@
 			.map((log) => new Date(log.timestamp))
 			.sort((d1, d2) => d1 - d2);
 
+	console.log(dates)
+
 	let date =
-		dates &&
+		dates.length > 0 ?
 		`From ${dateString(dates[0])} to ${dateString(
 			dates[dates.length - 1]
-		)}`;
-
-	console.log(date);
+		)}` : "No billable dates";
 
 	let reduced_logs = logs
 		.filter((log) => !log.billed && !log.stashed)
@@ -55,7 +55,7 @@
 		}, 0);
 
 	let accent = "#E94560";
-	let separation = "12pt";
+	let separation = "8pt";
 	let secondary = "#0F3460";
 </script>
 
